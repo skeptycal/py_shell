@@ -27,9 +27,8 @@ def py_shell() -> str:
     elif "ipython" in PY_BASE:
         shell = "IPython"
     else: 
-        # the 'platform' standard library was added in Python 2.6 on 01-Oct-2008 
-        # Some people recommend try/except ... I require python >= 3 instead
-        import platform
+        # requires Python 2.6
+        import platform 
         shell = platform.python_implementation()
     result = shell.strip()
     return result
