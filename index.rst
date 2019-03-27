@@ -9,7 +9,7 @@ Welcome to Py_Shell's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   README.md <readme_link>
+        - README.md <readme_link>
 
 
 
