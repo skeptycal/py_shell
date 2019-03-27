@@ -19,21 +19,62 @@
     # @link      http://www.github.com/skeptycal
     #
     ###########################################################################
+
+pc_version='
+
+    #####################################################################
+    pc.sh : pre-commit automation for macOS version 0.5.0
+
+    Usage: ./pc.sh {init|version|help}
+
+    copyright 2019 (c) Michael Treanor <https://www.github.com/skeptycal>
+    MIT License <https://opensource.org/licenses/MIT>
+
+    Usage: ./pc.sh {init|version|help}
+
+'
+
+pc_instructions='
+#####################################################################
+    pc.sh : pre-commit automation for macOS version 0.5.0
+
+    copyright 2019 (c) Michael Treanor <https://www.github.com/skeptycal>
+    MIT License <https://opensource.org/licenses/MIT>
+
+    Usage: ./pc.sh {init|version|help}
+
+Only run if changes to the yaml configuration are needed.
+
+Please make changes directly to the "template" file:
+    .pre-commit-template.yaml
+and run the script "./pc.sh" from this directory to update this file.
+
+Please do not make changes directly to the "config" file. The "config" file:
+    .pre-commit-config.yaml
+is created and updated by the pc.sh script found in the same directory
+in order to maintain the correct, current versioning from git (master sha)
+
+'
+
 sample_template='
+#####################################################################
+#     pc.sh : pre-commit automation for macOS version 0.5.0
+
+#     copyright 2019 (c) Michael Treanor <https://www.github.com/skeptycal>
+#     MIT License <https://opensource.org/licenses/MIT>
+
+#     Usage: ./pc.sh {init|version|help}
+
+# Only run if changes to the yaml configuration are needed.
+
 # Please make changes directly to the "template" file:
-
 #     .pre-commit-template.yaml
-
 # and run the script "./pc.sh" from this directory to update this file.
 
 # Please do not make changes directly to the "config" file. The "config" file:
-
 #     .pre-commit-config.yaml
-
 # is created and updated by the pc.sh script found in the same directory
-# in order to maintain the correct, current master sha 
-# # copyright (c) 2019 Michael Treanor (https://www.github.com/skeptycal)
-# # MIT License <https://opensource.org/licenses/MIT>
+# in order to maintain the correct, current versioning from git (master sha)
 
 default_language_version:
     python: python3.7
@@ -61,57 +102,47 @@ repos:
 -   repo: git://github.com/pre-commit/mirrors-pylint
     sha: master
     hooks:
-    -   id: pylint'
-
-
-case "$1" in
-        ["-i","--install",init)
-            echo "$sample_template" >> .pre-commit-template.yaml
-            continue
-            ;;
-         
-        ["-v","--version", version])
-            stop
-            ;;
-        status)
-            status anacron
-            ;;
-         
-        *)
-            echo $"Usage: $0 {start|stop|restart|condrestart|status}"
-            exit 1
- 
-esac
-
-
-case "$1" in
-["-i", "--install"]*)
-    echo "$sample_template" >> .pre-commit-template.yaml
-  ;;
-[7-8]*)
-  Message="Start thinking about cleaning out some stuff.  There's a partition that is $space % full."
-  ;;
-9[1-8])
-  Message="Better hurry with that new disk...  One partition is $space % full."
-  ;;
-99)
-  Message="I
+    -   id: pylint
+'
 
 if [ -n "$1" ]; then
-    if [ "$1" == "--install"]; then
-        echo "$sample_template" >> .pre-commit-template.yaml
-    else
-        #incorrect usage
-    fi
+    case "$1" in
+        init)
+            echo "$sample_template" >.pre-commit-template.yaml
+            exit 0
+            ;;
+
+        version)
+            echo $pc_version
+            exit 0
+            ;;
+
+        help)
+            echo $pc_instructions
+            exit 0
+            ;;
+
+        *)
+            echo "Invalid option: $1"
+            echo ""
+            echo "Usage: ./pc.sh {init|version|help}"
+            exit 2
+    esac
 fi
+
 if [ -f ".pre-commit-template.yaml" ]; then
+    echo "-> template file located: .pre-commit-template.yaml"
+    echo "-> backup file created: .pre-commit-config.yaml.bak"
     cp -pf .pre-commit-config.yaml .pre-commit-config.yaml.bak
+    echo "-> config file created: .pre-commit-config.yaml"
     cp -pf .pre-commit-template.yaml .pre-commit-config.yaml
     pre-commit autoupdate
     return 0
 else
-    echo "No template file found. Use <pc -install> to create a new one."
+    echo "No template file (.pre-commit-template.yaml) found in current directory."
+    echo "Use <./pc.sh init> to create a new one."
     echo "No changes made..."
+    echo ""
     return 126
 fi
 
