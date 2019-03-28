@@ -38,7 +38,7 @@ repos:
     # -   id: flake8
     -   id: pretty-format-json
     -   id: requirements-txt-fixer
-# -   repo: git://github.com/pre-commit/mirrors-pylint
-#     sha: master
-#     hooks:
-#     -   id: pylint
+-   repo: git://github.com/pre-commit/mirrors-pylint
+    sha: master
+    hooks:
+    -   id: pylint
