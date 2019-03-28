@@ -26,10 +26,9 @@ def py_shell() -> str:
             shell = "IPython Notebook"
     elif "ipython" in PY_BASE:
         shell = "IPython"
-    else: 
-        # requires Python 2.6
-        import platform 
-        shell = platform.python_implementation()
+    else:
+        import platform  # requires Python 2.3
+        shell = platform.python_implementation()  # requires Python 2.6
     result = shell.strip()
     return result
 
