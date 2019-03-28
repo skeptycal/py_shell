@@ -130,6 +130,7 @@ if [ -n "$1" ]; then
     esac
 fi
 
+
 if [ -f ".pre-commit-template.yaml" ]; then
     echo "-> template file located: .pre-commit-template.yaml"
     echo "-> backup file created: .pre-commit-config.yaml.bak"
