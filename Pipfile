@@ -15,6 +15,7 @@ bandit = "*"
 [packages]
 doc8 = "*"
 sphinx = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.7"
