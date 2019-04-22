@@ -23,7 +23,6 @@
     "url": "https://github.com/skeptycal/py_shell/issues"
   },
   "homepage": "https://github.com/skeptycal/py_shell#readme",
-  "devDependencies": {
-    "gulp": "^4.0.0"
-  }
+  "devDependencies": {},
+  "dependencies": {}
 }

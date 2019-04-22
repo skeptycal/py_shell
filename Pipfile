@@ -5,12 +5,16 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
-pylama = "*"
-pydocstyle = "*"
-flake8 = "*"
-pep8 = "*"
 mypy = "*"
 bandit = "*"
+pyflakes = "*"
+pylama = "*"
+pydocstyle = "*"
+pycodestyle = "*"
+pep8 = "*"
+restructuredtext-lint = "*"
+flake8 = "*"
+gitpython = "*"
 
 [packages]
 doc8 = "*"

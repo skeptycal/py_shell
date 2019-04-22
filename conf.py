@@ -1,5 +1,10 @@
-# -*- coding: utf-8 -*-
-#
+#!/usr/bin/env python3
+# -*- encoding: utf-8 -*-
+""" module conf.py
+
+    Returns: str -- python shell name. One of: ['IPython', 'IPython Notebook',
+         'Jupyter Notebook', ‘CPython’, ‘IronPython’, ‘Jython’, ‘PyPy’]
+    """
 # Configuration file for the Sphinx documentation builder.
 #
 # This file does only contain a selection of the most common options. For a
@@ -20,7 +25,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Py_Shell'
-copyright = '2019, Michael Treanor'
+project_copyright = '2019, Michael Treanor'
 author = 'Michael Treanor'
 
 # The short X.Y version
