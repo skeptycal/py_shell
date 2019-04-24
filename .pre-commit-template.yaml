@@ -34,7 +34,7 @@ repos:
       - id: check-symlinks
       - id: check-yaml
       - id: detect-private-key
-      # -   id: flake8
+      - id: flake8
       # -   id: pretty-format-json
       - id: requirements-txt-fixer
   - repo: git://github.com/pre-commit/mirrors-pylint
