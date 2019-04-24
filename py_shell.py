@@ -18,7 +18,7 @@ def py_shell() -> str:
     from typing import Dict
 
     PY_ENV: Dict = os.environ
-    PY_BASE: str = os.path.basename(PY_ENV['_'])
+    PY_BASE: str = os.path.basename(PY_ENV["_"])
     shell: str = "unknown"
 
     if "JPY_PARENT_PID" in PY_ENV:
@@ -30,6 +30,7 @@ def py_shell() -> str:
         shell = "IPython"
     else:
         import platform  # requires Python 2.3
+
         shell = platform.python_implementation()  # requires Python 2.6
     result = shell.strip()
     return result
